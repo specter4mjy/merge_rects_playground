@@ -7,18 +7,19 @@ class MyViewController : UIViewController {
     override func loadView() {
         let view = UIView()
         view.backgroundColor = .white
-
+        view.backgroundColor = .black
         self.view = view
         
-        let rect = UIView()
-        rect.backgroundColor = .red
-        rect.frame = CGRect(x: 20, y: 20, width: 20, height: 20)
-        view.addSubview(rect)
+        let rects = [CGRect(x: 30, y: 30, width: 20, height: 20),
+                     CGRect(x: 50, y: 30, width: 20, height: 20),
+                     CGRect(x: 30, y: 80, width: 20, height: 20),
+                     CGRect(x: 30, y: 150, width: 20, height: 20)]
         
-        let rect2 = UIView()
-        rect2.backgroundColor = .green
-        rect2.frame = CGRect(x: 80, y: 20, width: 20, height: 20)
-        view.addSubview(rect2)
+        rects.forEach { rect in
+            let v = UIView(frame: rect)
+            v.backgroundColor = UIColor(hue: CGFloat.random(in: 0..<1), saturation: 1, brightness: 1, alpha: 1)
+            view.addSubview(v)
+        }
     }
 }
 // Present the view controller in the Live View window
